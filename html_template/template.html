@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+              margin: 0;
+              padding: 0;
+
+            }
+
+            @font-face {
+                font-family: 'Calibri';
+                src: local("fonts/calibri.ttf") format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Calibri-bold';
+                src: local("fonts/calibrib.ttf") format('truetype');
+            }
+
+
+            * {
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+            }
+
+            .page {
+             background: white;
+            }
+            @page {
+              size: A4;
+              margin: 0;
+            }
+            h1 {
+            font-family: 'Calibri';
+            margin: 0;
+            padding: 0;
+            font-size: 22px;
+            border-bottom: 5px solid black;
+            }
+            .header {
+            width: 100%;
+            display: table;
+            margin-top: 5mm;
+            }
+            .h_row {
+                width: 100%;
+                display: table-row;
+            }
+            .h_cell {
+                display: table-cell;
+            }
+            .h_left_cell{
+                width: 30%;
+                font-family: 'Calibri';
+                font-weight: bold;
+                font-size: 17px;
+            }
+            .h_right_cell {
+            width: 70%;
+            font-family: 'Calibri';
+            font-size: 17px;
+            }
+
+            .mail_body{
+            font-family: 'Calibri';
+            margin-top: 10mm;
+            font-size: 11 px;
+            width: 100%;
+            }
+
+    </style>
+    <title>Test</title>
+</head>
+<body>
+<div class="page">
+    <h1>{{name_and_surname}}</h1>
+    <div class="header">
+        <div class="h_row">
+            <div class="h_left_cell h_cell"><strong>Od:</strong></div>
+            <div class="h_right_cell h_cell">{{From}}</div>
+        </div>
+        <div class="h_row">
+            <div class="h_left_cell h_cell">Wysłano:</div>
+            <div class="h_right_cell h_cell">{{date}}</div>
+        </div>
+        <div class="h_row">
+            <div class="h_left_cell h_cell">Do:</div>
+            <div class="h_right_cell h_cell">{{To}}</div>
+        </div>
+        {% if Cc is defined %}
+        <div class="h_row">
+            <div class="h_left_cell h_cell">DW:</div>
+            <div class="h_right_cell h_cell">{{Cc}}</div>
+        </div>
+        {% endif %}
+        <div class="h_row">
+            <div class="h_left_cell h_cell">Temat:</div>
+            <div class="h_right_cell h_cell">{{subject}}</div>
+        </div>
+        {% if attachments is defined %}
+        <div class="h_row">
+            <div class="h_left_cell h_cell">Załączniki:</div>
+            <div class="h_right_cell h_cell">{{ attachments }}
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="mail_body">{{body}}</div>
+</div>
+</body>
+</html>
